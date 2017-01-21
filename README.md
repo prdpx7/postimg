@@ -1,2 +1,25 @@
 # postimg
-:rocket: upload images on imgur 
+:rocket: upload images on imgur & share instantly.(link will be copied to clipboard automatically)
+
+[![MITlicensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/zuck007/postimg/master/LICENSE)
+[![PyPI version](https://badge.fury.io/py/postimg.svg)](https://badge.fury.io/py/postimg)
+## Installation
+```
+pip install postimg
+```
+## Usage
+```
+$ postimg --help
+usage: postimg [-h] [--github] [--html] [--reddit] img_path
+
+Post/upload image on imgur.com
+
+positional arguments:
+  img_path    image path of file
+
+optional arguments:
+  -h, --help  show this help message and exit
+  --github    Github markdown code of imgur url
+  --html      html <img> code of imgur url
+  --reddit    reddit markdown code of imgur url
+```

@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+from postimg import Imgur
+import argparse
+import pyperclip
+def main(args):
+    imgur_url = Imgur(args.img_path).upload()['data']['link']
+    share = imgur_url
+    if args.github:
+        share = '![GithubSnap](%s)'%imgur_url
+    elif args.reddit:
+        share = '[Reddit](%s)'%imgur_url
+    elif args.html:
+        share = '<img src="%s" alt="snap">'%imgur_url
+    pyperclip.copy(share)
+    print share
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Post/upload image on imgur.com')
+    parser.add_argument('img_path', type=str,help='image path of file')
+    parser.add_argument('--github',action='store_true',help='Github markdown code of imgur url')
+    parser.add_argument('--html',action='store_true',help='html <img> code of imgur url')
+    parser.add_argument('--reddit',action='store_true',help='reddit markdown  code of imgur url')
+    args = parser.parse_args()
+    main(args)
