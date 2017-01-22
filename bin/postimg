@@ -15,7 +15,7 @@ def main(args):
     print share
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Post/upload image on imgur.com')
+    parser = argparse.ArgumentParser(description='Post/upload image on imgur.com',epilog='link will automatically copied to clipboard')
     parser.add_argument('img_path', type=str,help='image path of file')
     parser.add_argument('--github',action='store_true',help='Github markdown code of imgur url')
     parser.add_argument('--html',action='store_true',help='html <img> code of imgur url')

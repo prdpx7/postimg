@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name="postimg",
-      version="0.1",
+      version="0.2",
       description="Upload/share images with imagurl.com",
       url="http://github.com/zuck007/postimg",
       author="Pradeep Khileri",
