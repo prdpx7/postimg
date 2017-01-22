@@ -5,7 +5,7 @@ import json
 import sys
 class Imgur(object):
     '''
-    Anonymous image upload on imgur.com with cliend_id
+    Anonymous image upload on imgur.com with client_id
     '''
     def __init__(self,img_path):
         self.img_path = os.path.expanduser(img_path)
