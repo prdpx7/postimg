@@ -34,3 +34,5 @@ optional arguments:
 
 link will automatically copied to clipboard
 ```
+## Demo
+![GithubSnap](http://i.imgur.com/li72nec.gif)
