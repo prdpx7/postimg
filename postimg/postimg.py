@@ -16,7 +16,7 @@ class Imgur(object):
             print file_exception
             sys.exit(1)
         #if client_id exist in env else use default
-        self.client_id = os.environ.data['IMGUR_CLIENT_ID'] or '2b8986ab0193370'
+        self.client_id = os.environ.get('IMGUR_CLIENT_ID') or '2b8986ab0193370'
 
     def upload(self):
         headers = {'Authorization':'Client-ID '+ self.client_id}
