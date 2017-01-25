@@ -22,6 +22,8 @@ class Imgur(object):
         headers = {'Authorization':'Client-ID '+ self.client_id}
         data = {'image':self.img_b64}
         url = 'https://api.imgur.com/3/image'
-        return json.loads(requests.post(url,headers=headers,data=data).text)
-
+        try:
+            return json.loads(requests.post(url,headers=headers,data=data).text)
+        except Exception as net_exception:
+            return {'success':False,'error':'SocketException'}
 

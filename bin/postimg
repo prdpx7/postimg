@@ -1,24 +1,33 @@
 #!/usr/bin/env python
-from postimg import Imgur
+import postimg
 import argparse
 import pyperclip
+import json
 def main(args):
-    imgur_url = Imgur(args.img_path).upload()['data']['link']
-    share = imgur_url
+    print "Uploading....."
+    resp = postimg.Imgur(args.img_path).upload()
+    if not resp['success']:
+        print json.dumps(resp, sort_keys=True, indent=4, separators=(',', ': '))
+        print "Unable to upload !!!"
+        return None
+    link = resp['data']['link']
     if args.github:
-        share = '![GithubSnap](%s)'%imgur_url
+        link = '![GithubSnap](%s)'%link
     elif args.reddit:
-        share = '[Reddit](%s)'%imgur_url
+        link = '[Reddit](%s)'%link
     elif args.html:
-        share = '<img src="%s" alt="snap">'%imgur_url
-    pyperclip.copy(share)
-    print share
+        link = '<img src="%s" alt="snap">'%link
+    pyperclip.copy(link)
+    print link
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Post/upload image on imgur.com',epilog='link will automatically copied to clipboard')
-    parser.add_argument('img_path', type=str,help='image path of file')
-    parser.add_argument('--github',action='store_true',help='Github markdown code of imgur url')
-    parser.add_argument('--html',action='store_true',help='html <img> code of imgur url')
-    parser.add_argument('--reddit',action='store_true',help='reddit markdown  code of imgur url')
+    parser = argparse.ArgumentParser(description='Post/upload image on imgur.com', epilog='link will automatically copied to clipboard')
+    parser.add_argument('img_path', type=str, help='image path of file')
+    parser.add_argument('--github', action='store_true', help='Github markdown code of imgur url')
+    parser.add_argument('--html', action='store_true', help='html <img> code of imgur url')
+    parser.add_argument('--reddit', action='store_true', help='reddit markdown  code of imgur url')
     args = parser.parse_args()
-    main(args)
+    try:
+        main(args)
+    except KeyboardInterrupt:
+        print "Error: Interrupted by user!!"
