@@ -4,11 +4,13 @@ import argparse
 import pyperclip
 import json
 def main(args):
-    print "Uploading....."
+    if not args.quiet:
+        print "Uploading....."
     resp = postimg.Imgur(args.img_path).upload()
     if not resp['success']:
-        print json.dumps(resp, sort_keys=True, indent=4, separators=(',', ': '))
-        print "Unable to upload !!!"
+        if not args.quiet:
+            print json.dumps(resp, sort_keys=True, indent=4, separators=(',', ': '))
+            print "Unable to upload !!!"
         return None
     link = resp['data']['link']
     if args.github:
@@ -26,6 +28,7 @@ if __name__ == '__main__':
     parser.add_argument('--github', action='store_true', help='Github markdown code of imgur url')
     parser.add_argument('--html', action='store_true', help='html <img> code of imgur url')
     parser.add_argument('--reddit', action='store_true', help='reddit markdown  code of imgur url')
+    parser.add_argument('-q','--quiet', action='store_true', help='print only img url without verbose output')
     args = parser.parse_args()
     try:
         main(args)

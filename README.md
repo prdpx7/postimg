@@ -31,7 +31,8 @@ optional arguments:
   --github    Github markdown code of imgur url
   --html      html <img> code of imgur url
   --reddit    reddit markdown code of imgur url
-
+  -q, --quiet  print only img url without verbose output
+  
 link will automatically copied to clipboard
 ```
 ## Demo
