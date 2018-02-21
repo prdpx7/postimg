@@ -3,7 +3,7 @@
 
 <img src="http://i.imgur.com/aBoKRZe.png" alt="snap" height="200">
 
-[![MITlicensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/zuck007/postimg/master/LICENSE)
+[![MITlicensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/prdpx7/postimg/master/LICENSE)
 [![PyPI version](https://badge.fury.io/py/postimg.svg)](https://badge.fury.io/py/postimg)
 ## IMGUR API
 
