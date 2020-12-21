@@ -1,16 +1,16 @@
 #!/usr/bin/env python
-import postimg
+from postimg import postimg
 import argparse
 import pyperclip
 import json
 def main(args):
     if not args.quiet:
-        print "Uploading....."
+        print("Uploading.....")
     resp = postimg.Imgur(args.img_path).upload()
     if not resp['success']:
         if not args.quiet:
-            print json.dumps(resp, sort_keys=True, indent=4, separators=(',', ': '))
-            print "Unable to upload !!!"
+            print(json.dumps(resp, sort_keys=True, indent=4, separators=(',', ': ')))
+            print("Unable to upload !!!")
         return None
     link = resp['data']['link']
     if args.github:
@@ -20,7 +20,7 @@ def main(args):
     elif args.html:
         link = '<img src="%s" alt="snap">'%link
     pyperclip.copy(link)
-    print link
+    print(link)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Post/upload image on imgur.com', epilog='link will automatically copied to clipboard')
@@ -33,4 +33,4 @@ if __name__ == '__main__':
     try:
         main(args)
     except KeyboardInterrupt:
-        print "Error: Interrupted by user!!"
+        print("Error: Interrupted by user!!")

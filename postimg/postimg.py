@@ -13,7 +13,7 @@ class Imgur(object):
             with open(self.img_path,'rb') as img:
                 self.img_b64 = base64.b64encode(img.read())
         except Exception as file_exception:
-            print file_exception
+            print(file_exception)
             sys.exit(1)
         #if client_id exist in env else use default
         self.client_id = os.environ.get('IMGUR_CLIENT_ID') or '2b8986ab0193370'
